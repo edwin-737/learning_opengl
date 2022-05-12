@@ -1,0 +1,13 @@
+﻿  main.cpp
+C:\Users\edwon\OneDrive\Desktop\openGL_project\MyOpenGL1 - Copy\MyOpenGL1\shaderClass.h(93,62): warning C4244: 'argument': conversion from 'float' to 'GLint', possible loss of data
+C:\Users\edwon\OneDrive\Desktop\openGL_project\MyOpenGL1 - Copy\MyOpenGL1\main.cpp(198,22): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\edwon\OneDrive\Desktop\openGL_project\MyOpenGL1 - Copy\MyOpenGL1\main.cpp(201,21): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\edwon\OneDrive\Desktop\openGL_project\MyOpenGL1 - Copy\MyOpenGL1\main.cpp(189,8): warning C4101: 'timeValue': unreferenced local variable
+C:\Users\edwon\OneDrive\Desktop\openGL_project\MyOpenGL1 - Copy\MyOpenGL1\main.cpp(189,19): warning C4101: 'greenValue': unreferenced local variable
+C:\Users\edwon\OneDrive\Desktop\openGL_project\MyOpenGL1 - Copy\MyOpenGL1\main.cpp(340,11): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\edwon\OneDrive\Desktop\openGL_project\MyOpenGL1 - Copy\MyOpenGL1\main.cpp(341,11): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\edwon\OneDrive\Desktop\openGL_project\MyOpenGL1 - Copy\MyOpenGL1\main.cpp(344,16): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\edwon\OneDrive\Desktop\openGL_project\MyOpenGL1 - Copy\MyOpenGL1\main.cpp(345,16): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\edwon\OneDrive\Desktop\openGL_project\MyOpenGL1 - Copy\MyOpenGL1\main.cpp(346,10): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\edwon\OneDrive\Desktop\openGL_project\MyOpenGL1 - Copy\MyOpenGL1\main.cpp(347,10): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+  MyOpenGL1.vcxproj -> C:\Users\edwon\OneDrive\Desktop\openGL_project\MyOpenGL1 - Copy\x64\Debug\MyOpenGL1.exe
