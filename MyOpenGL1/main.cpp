@@ -203,10 +203,11 @@ int main() {
 		//float camX = sin(glfwGetTime()) * radius;
 		//float camZ = cos(glfwGetTime()) * radius;
 
-		direction.y = sin(glm::radians(pitch));
+		direction.y = -sin(glm::radians(pitch));
 		direction.x = cos(glm::radians(pitch)) * cos(glm::radians(yaw));
 		direction.z = cos(glm::radians(pitch)) * sin(glm::radians(yaw));
 		cameraFront = glm::normalize(direction);
+		cameraTarget = cameraFront + cameraPos;
 		//view = glm::lookAt(glm::vec3((GLfloat)camX, 0.0f, (GLfloat)camZ), cameraTarget, up);
 		view = glm::lookAt(cameraPos, cameraTarget, cameraUp);
 		projection = glm::perspective(glm::radians(45.0f), 800.0f / 600.0f, 0.1f, 100.0f);
