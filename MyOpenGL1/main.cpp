@@ -13,16 +13,16 @@
 
 #include "shaderClass.h"
 #include "stb_image.h"
+#include "camera.h"
 void processInput(GLFWwindow* window);
 void frameBufferSizeCallback(GLFWwindow* window, int screen_width, int screen_height);
 void mouse_callback(GLFWwindow* window, double xpos, double ypos);
+void scroll_callback(GLFWwindow* window, double xoffset, double yoffset);
+
 float yaw = -90.0f , pitch=0.0f;
 float lastX = 400, lastY = 300;
 glm::vec3 cameraPos = glm::vec3(0.0f, 0.0f, 3.0f);
-glm::vec3 cameraTarget = glm::vec3(0.0f, 0.0f, 0.0f);
-glm::vec3 cameraFront = glm::vec3(0.0f, 0.0f, -1.0f);
-glm::vec3 cameraUp = glm::vec3(0.0f, 1.0f, 0.0f);
-glm::vec3 direction = glm:: vec3(1.0f, 1.0f, 1.0f);
+Camera ourCamera(cameraPos);
 bool firstClick = true;
 float deltaTime = 0.0f; // Time between current frame and last frame
 float lastFrame = 0.0f; // TIme of last frame
@@ -120,6 +120,7 @@ int main() {
 
 	glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 	glfwSetCursorPosCallback(window, mouse_callback);
+	glfwSetScrollCallback(window, scroll_callback);
 	glfwMakeContextCurrent(window);
 	gladLoadGL();
 	if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
@@ -159,6 +160,7 @@ int main() {
 	unsigned int texture;
 	glGenTextures(1, &texture);
 	glBindTexture(GL_TEXTURE_2D, texture);
+
 	if (data) {
 		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
 		glGenerateMipmap(GL_TEXTURE_2D);
@@ -171,18 +173,17 @@ int main() {
 	//vertex buffers and array objects
 	unsigned int VBO, VAO;
 	glGenBuffers(1, &VBO);
+	glBindBuffer(GL_ARRAY_BUFFER, VBO);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices_cube), vertices_cube, GL_STATIC_DRAW);
 	//glGenBuffers(1, &EBO);
+	//glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
+	//glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
 	glGenVertexArrays(1, &VAO);
 	glBindVertexArray(VAO);
-	glBindBuffer(GL_ARRAY_BUFFER, VBO);
-	//glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices_cube), vertices_cube, GL_STATIC_DRAW);
-	//glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5* sizeof(float), (void*)0);
 	glEnableVertexAttribArray(0);
 	glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)(3 * sizeof(float)));
 	glEnableVertexAttribArray(1);
-	glBindTexture(GL_TEXTURE_2D, texture);
 	glBindVertexArray(VAO);
 	//glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)(6 * sizeof(float)));
 	//glEnableVertexAttribArray(2);
@@ -195,22 +196,18 @@ int main() {
 		glClear(GL_COLOR_BUFFER_BIT);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		ourShader.use();
-		float currentFrame = glfwGetTime();
-		deltaTime = currentFrame - lastFrame;
-		lastFrame = currentFrame;
-		cameraSpeed = 2.5 * deltaTime;
+		ourCamera.update();
+		//float currentFrame = glfwGetTime();
+		//deltaTime = currentFrame - lastFrame;
+		//lastFrame = currentFrame;
+		//cameraSpeed = 2.5 * deltaTime;
 		//const float radius = 10.0f;
 		//float camX = sin(glfwGetTime()) * radius;
 		//float camZ = cos(glfwGetTime()) * radius;
 
-		direction.y = -sin(glm::radians(pitch));
-		direction.x = cos(glm::radians(pitch)) * cos(glm::radians(yaw));
-		direction.z = cos(glm::radians(pitch)) * sin(glm::radians(yaw));
-		cameraFront = glm::normalize(direction);
-		cameraTarget = cameraFront + cameraPos;
 		//view = glm::lookAt(glm::vec3((GLfloat)camX, 0.0f, (GLfloat)camZ), cameraTarget, up);
-		view = glm::lookAt(cameraPos, cameraTarget, cameraUp);
-		projection = glm::perspective(glm::radians(45.0f), 800.0f / 600.0f, 0.1f, 100.0f);
+		view = glm::lookAt(ourCamera.cameraPos, ourCamera.cameraTarget, ourCamera.cameraUp);
+		projection = glm::perspective(glm::radians(ourCamera.fov), 800.0f / 600.0f, 0.1f, 100.0f);
 		//timeValue = glfwGetTime();
 		//greenValue = sin(timeValue / 2.0f) + 0.5f;
 		//int vertexLocation = glGetUniformLocation(ourShader.ID, "ourColor");
@@ -318,20 +315,7 @@ int main() {
 void processInput(GLFWwindow* window) {
 	if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
 		glfwSetWindowShouldClose(window, true);
-	if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
-		cameraPos += cameraSpeed * cameraFront;
-	if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
-		cameraPos -= cameraSpeed * cameraFront;
-	if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS)
-		cameraPos -= cameraSpeed * glm::normalize((glm::cross(cameraFront, cameraUp)));
-	if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
-		cameraPos += cameraSpeed * glm::normalize((glm::cross(cameraFront, cameraUp)));
-	if (glfwGetKey(window, GLFW_KEY_SPACE == GLFW_PRESS)) {
-		cameraPos.x = 0.0f;
-		cameraPos.y = 0.0f;
-		cameraPos.z = -3.0f;
-
-	}
+	ourCamera.processWASD(window);
 }
 void framebufferSizeCallback(GLFWwindow* window, int screen_width, int screen_height) {
 	glViewport(0, 0, screen_width, screen_height);
@@ -342,17 +326,8 @@ void mouse_callback(GLFWwindow* window, double xpos, double ypos) {
 		lastY = ypos;
 		firstClick = false;
 	}
-	float xoffset = xpos - lastX;
-	float yoffset = ypos - lastY;
-	lastX = xpos;
-	lastY = ypos;
-	const float sensitivity = 0.1f;
-	xoffset *= sensitivity;
-	yoffset *= sensitivity;
-	yaw += xoffset;
-	pitch += yoffset;
-	if (pitch > 89.0f)
-		pitch = 89.0f;
-	if (pitch < -89.0f)
-		pitch = -89.0f;
+	ourCamera.processMouseMovement(xpos,ypos);
+}
+void scroll_callback(GLFWwindow* window, double xoffset, double yoffset) {
+	ourCamera.processScrollMovement(xoffset, yoffset);
 }

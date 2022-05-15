@@ -173,7 +173,7 @@
     <Image Include="pop_cat.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Header.h" />
+    <ClInclude Include="camera.h" />
     <ClInclude Include="stb_image.h" />
     <ClInclude Include="shaderClass.h" />
   </ItemGroup>
