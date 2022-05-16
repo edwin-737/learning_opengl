@@ -1,14 +1,1 @@
-﻿  main.cpp
-C:\Users\edwon\OneDrive\Desktop\openGL_project\learning\MyOpenGL1\shaderClass.h(93,62): warning C4244: 'argument': conversion from 'float' to 'GLint', possible loss of data
-C:\Users\edwon\OneDrive\Desktop\openGL_project\learning\MyOpenGL1\camera.h(35,22): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-C:\Users\edwon\OneDrive\Desktop\openGL_project\learning\MyOpenGL1\camera.h(38,21): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-C:\Users\edwon\OneDrive\Desktop\openGL_project\learning\MyOpenGL1\camera.h(56,17): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-C:\Users\edwon\OneDrive\Desktop\openGL_project\learning\MyOpenGL1\camera.h(57,17): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-C:\Users\edwon\OneDrive\Desktop\openGL_project\learning\MyOpenGL1\camera.h(58,11): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-C:\Users\edwon\OneDrive\Desktop\openGL_project\learning\MyOpenGL1\camera.h(59,11): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-C:\Users\edwon\OneDrive\Desktop\openGL_project\learning\MyOpenGL1\camera.h(71,10): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
-C:\Users\edwon\OneDrive\Desktop\openGL_project\learning\MyOpenGL1\main.cpp(190,8): warning C4101: 'timeValue': unreferenced local variable
-C:\Users\edwon\OneDrive\Desktop\openGL_project\learning\MyOpenGL1\main.cpp(190,19): warning C4101: 'greenValue': unreferenced local variable
-C:\Users\edwon\OneDrive\Desktop\openGL_project\learning\MyOpenGL1\main.cpp(325,11): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-C:\Users\edwon\OneDrive\Desktop\openGL_project\learning\MyOpenGL1\main.cpp(326,11): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-  MyOpenGL1.vcxproj -> C:\Users\edwon\OneDrive\Desktop\openGL_project\learning\x64\Debug\MyOpenGL1.exe
+﻿  MyOpenGL1.vcxproj -> C:\Users\edwon\OneDrive\Desktop\openGL_project\learning\x64\Debug\MyOpenGL1.exe
