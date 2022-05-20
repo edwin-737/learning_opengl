@@ -1,1 +1,13 @@
-﻿  MyOpenGL1.vcxproj -> C:\Users\edwon\OneDrive\Desktop\openGL_project\learning\x64\Debug\MyOpenGL1.exe
+﻿  main.cpp
+  The contents of <filesystem> are available only with C++17 or later.
+C:\Users\edwon\OneDrive\Desktop\openGL_project\learning\MyOpenGL1\shaderClass.h(93,62): warning C4244: 'argument': conversion from 'float' to 'GLint', possible loss of data
+C:\Users\edwon\OneDrive\Desktop\openGL_project\learning\MyOpenGL1\camera.h(35,22): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\edwon\OneDrive\Desktop\openGL_project\learning\MyOpenGL1\camera.h(38,21): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\edwon\OneDrive\Desktop\openGL_project\learning\MyOpenGL1\camera.h(61,17): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\edwon\OneDrive\Desktop\openGL_project\learning\MyOpenGL1\camera.h(62,17): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\edwon\OneDrive\Desktop\openGL_project\learning\MyOpenGL1\camera.h(63,11): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\edwon\OneDrive\Desktop\openGL_project\learning\MyOpenGL1\camera.h(64,11): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\edwon\OneDrive\Desktop\openGL_project\learning\MyOpenGL1\camera.h(76,10): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
+C:\Users\edwon\OneDrive\Desktop\openGL_project\learning\MyOpenGL1\main.cpp(361,11): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\edwon\OneDrive\Desktop\openGL_project\learning\MyOpenGL1\main.cpp(362,11): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+  MyOpenGL1.vcxproj -> C:\Users\edwon\OneDrive\Desktop\openGL_project\learning\x64\Debug\MyOpenGL1.exe

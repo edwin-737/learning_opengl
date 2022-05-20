@@ -172,6 +172,7 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="..\..\..\..\..\Downloads\space.png" />
+    <Image Include="..\..\..\..\..\Downloads\wood1.jpg" />
     <Image Include="..\..\..\wood_opengl.jpeg" />
     <Image Include="pop_cat.jpg" />
   </ItemGroup>
